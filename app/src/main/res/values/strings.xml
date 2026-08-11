@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">StressWatch AI</string>
+    <string name="tagline">Hybrid Real-Time Stress Detection</string>
+
+    <!-- Tabs -->
+    <string name="tab_monitor">Monitor</string>
+    <string name="tab_history">History</string>
+    <string name="tab_settings">Settings</string>
+
+    <!-- Dashboard -->
+    <string name="stress_score">Stress Score</string>
+    <string name="heart_rate">Heart Rate</string>
+    <string name="hrv">HRV (RMSSD)</string>
+    <string name="confidence">Confidence</string>
+    <string name="face">Face</string>
+    <string name="voice">Voice</string>
+    <string name="motion">Motion</string>
+    <string name="trend">Trend</string>
+    <string name="start_monitoring">Start Monitoring</string>
+    <string name="stop_monitoring">Stop Monitoring</string>
+    <string name="calibrating">Calibrating sensors…</string>
+    <string name="live">LIVE</string>
+
+    <!-- Stress Levels -->
+    <string name="level_low">Low Stress</string>
+    <string name="level_moderate">Moderate</string>
+    <string name="level_high">High Stress</string>
+    <string name="level_critical">Critical!</string>
+
+    <!-- History -->
+    <string name="no_sessions">No monitoring sessions yet.\nTap Monitor to start.</string>
+    <string name="session_title">Session</string>
+    <string name="avg_stress">Avg Stress</string>
+    <string name="peak_stress">Peak</string>
+    <string name="duration">Duration</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="alert_threshold">Alert Threshold</string>
+    <string name="alert_threshold_desc">Trigger alert when stress exceeds this value</string>
+    <string name="vibration_alerts">Vibration Alerts</string>
+    <string name="privacy_title">Privacy</string>
+    <string name="privacy_desc">All data is processed on-device. Nothing is transmitted.</string>
+    <string name="clear_data">Clear All Data</string>
+    <string name="version">Version 1.0.0</string>
+
+    <!-- Permissions -->
+    <string name="perm_camera">Camera permission required for facial analysis and rPPG heart rate detection.</string>
+    <string name="perm_microphone">Microphone permission required for voice stress analysis.</string>
+
+    <!-- Notifications -->
+    <string name="notif_monitoring_title">StressWatch AI</string>
+    <string name="notif_monitoring_text">Monitoring your stress level…</string>
+    <string name="notif_alert_title">⚠ Critical Stress Detected!</string>
+    <string name="notif_alert_text">Your stress level has reached a critical level. Please take a break.</string>
+
+    <!-- Content descriptions -->
+    <string name="cd_logo">StressWatch AI logo</string>
+    <string name="cd_score_ring">Stress score ring</string>
+    <string name="cd_camera_preview">Camera preview for facial analysis</string>
+    <string name="cd_heart_icon">Heart rate icon</string>
+</resources>

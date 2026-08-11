@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_primary"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="StressWatch AI"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary" />
+                <TextView
+                    android:id="@+id/tv_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ready to monitor"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_secondary" />
+            </LinearLayout>
+
+            <!-- LIVE badge -->
+            <TextView
+                android:id="@+id/tv_live_badge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="\u25cf  LIVE"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="@color/stress_critical"
+                android:background="@drawable/bg_live_badge"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:letterSpacing="0.08"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <!-- Camera preview card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/camera_preview_height"
+            app:cardBackgroundColor="@color/bg_card"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            android:layout_marginBottom="16dp">
+
+            <androidx.camera.view.PreviewView
+                android:id="@+id/camera_preview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:scaleType="fillCenter" />
+
+            <!-- Face overlay indicator -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|start"
+                android:margin="8dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_card"
+                android:padding="6dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="\uD83D\uDC41" android:textSize="14sp" android:layout_marginEnd="4dp" />
+                <TextView
+                    android:id="@+id/tv_face_status"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="No face" android:textSize="11sp" android:textColor="@color/text_secondary" />
+            </LinearLayout>
+
+            <!-- HR badge -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|end"
+                android:margin="8dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_card"
+                android:padding="6dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="\u2764" android:textSize="14sp" android:textColor="@color/stress_critical" android:layout_marginEnd="4dp"/>
+                <TextView
+                    android:id="@+id/tv_hr_badge"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="-- BPM" android:textSize="12sp"
+                    android:textStyle="bold" android:textColor="@color/text_primary"
+                    android:fontFamily="monospace" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Main Score Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/bg_card"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            android:layout_marginBottom="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:gravity="center">
+
+                <!-- Score Ring -->
+                <FrameLayout
+                    android:layout_width="@dimen/score_ring_size"
+                    android:layout_height="@dimen/score_ring_size"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="16dp">
+
+                    <ProgressBar
+                        android:id="@+id/score_ring"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:rotation="-90"
+                        android:max="100"
+                        android:progress="0"
+                        android:progressBackgroundTint="@color/ring_background"
+                        android:progressTint="@color/stress_low" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/tv_score"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--"
+                            android:textSize="@dimen/text_score"
+                            android:textStyle="bold"
+                            android:textColor="@color/text_primary"
+                            android:fontFamily="monospace" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="/ 100"
+                            android:textSize="12sp"
+                            android:textColor="@color/text_secondary" />
+
+                    </LinearLayout>
+                </FrameLayout>
+
+                <!-- Stress Level Label -->
+                <TextView
+                    android:id="@+id/tv_level"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Not Monitoring"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginBottom="6dp" />
+
+                <!-- Trend indicator -->
+                <TextView
+                    android:id="@+id/tv_trend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="\u2192 Stable"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_secondary" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Modality Cards Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp"
+            android:weightSum="3">
+
+            <!-- Face Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:layout_marginEnd="6dp"
+                app:cardBackgroundColor="@color/bg_card"
+                app:cardCornerRadius="12dp" app:cardElevation="0dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="12dp" android:gravity="center">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="\uD83D\uDC41" android:textSize="22sp" android:layout_marginBottom="4dp"/>
+                    <TextView android:id="@+id/tv_face_score" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="--" android:textSize="18sp"
+                        android:textStyle="bold" android:fontFamily="monospace" android:textColor="@color/brand_purple" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Face" android:textSize="10sp" android:textColor="@color/text_secondary"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- HRV Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:layout_marginEnd="6dp"
+                app:cardBackgroundColor="@color/bg_card"
+                app:cardCornerRadius="12dp" app:cardElevation="0dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="12dp" android:gravity="center">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="\uD83D\uDC93" android:textSize="22sp" android:layout_marginBottom="4dp"/>
+                    <TextView android:id="@+id/tv_hrv_score" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="--" android:textSize="18sp"
+                        android:textStyle="bold" android:fontFamily="monospace" android:textColor="@color/brand_cyan" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="HRV ms" android:textSize="10sp" android:textColor="@color/text_secondary"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Motion Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:cardBackgroundColor="@color/bg_card"
+                app:cardCornerRadius="12dp" app:cardElevation="0dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="12dp" android:gravity="center">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="\uD83D\uDCCB" android:textSize="22sp" android:layout_marginBottom="4dp"/>
+                    <TextView android:id="@+id/tv_motion_score" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="--" android:textSize="18sp"
+                        android:textStyle="bold" android:fontFamily="monospace" android:textColor="@color/brand_pink" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Motion" android:textSize="10sp" android:textColor="@color/text_secondary"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <!-- Voice row -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/bg_card"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            android:layout_marginBottom="12dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:padding="14dp" android:gravity="center_vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="\uD83C\uDFA4" android:textSize="20sp" android:layout_marginEnd="10dp"/>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Voice Stress" android:textSize="12sp" android:textColor="@color/text_secondary"/>
+                    <ProgressBar android:id="@+id/pb_voice"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent" android:layout_height="6dp"
+                        android:max="100" android:progress="0"
+                        android:progressTint="@color/stress_high"
+                        android:progressBackgroundTint="@color/ring_background"
+                        android:layout_marginTop="4dp" />
+                </LinearLayout>
+                <TextView android:id="@+id/tv_voice_score"
+                    android:layout_width="40dp" android:layout_height="wrap_content"
+                    android:text="--" android:textSize="16sp" android:textStyle="bold"
+                    android:textColor="@color/text_primary" android:fontFamily="monospace"
+                    android:textAlignment="textEnd" android:layout_marginStart="12dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Confidence bar -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/bg_card"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            android:layout_marginBottom="20dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:padding="14dp" android:gravity="center_vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="\uD83C\uDFAF" android:textSize="20sp" android:layout_marginEnd="10dp"/>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Model Confidence" android:textSize="12sp" android:textColor="@color/text_secondary"/>
+                    <ProgressBar android:id="@+id/pb_confidence"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent" android:layout_height="6dp"
+                        android:max="100" android:progress="0"
+                        android:progressTint="@color/brand_purple"
+                        android:progressBackgroundTint="@color/ring_background"
+                        android:layout_marginTop="4dp" />
+                </LinearLayout>
+                <TextView android:id="@+id/tv_confidence"
+                    android:layout_width="40dp" android:layout_height="wrap_content"
+                    android:text="--%" android:textSize="16sp" android:textStyle="bold"
+                    android:textColor="@color/brand_purple" android:fontFamily="monospace"
+                    android:textAlignment="textEnd" android:layout_marginStart="12dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Start/Stop Button -->
+        <Button
+            android:id="@+id/btn_start_stop"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Start Monitoring"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:background="@drawable/bg_button_primary"
+            android:layout_marginBottom="8dp" />
+
+    </LinearLayout>
+</ScrollView>

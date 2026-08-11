@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_primary">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Settings"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Alert threshold -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/bg_card"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            android:layout_marginBottom="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="\u26a0 Alert Threshold"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginBottom="4dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Trigger vibration alert when stress exceeds this level"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginBottom="12dp" />
+
+                <SeekBar
+                    android:id="@+id/seekbar_threshold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="100"
+                    android:progress="75"
+                    android:progressTint="@color/brand_purple"
+                    android:thumbTint="@color/brand_purple" />
+
+                <TextView
+                    android:id="@+id/tv_threshold_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="75"
+                    android:textSize="13sp"
+                    android:textColor="@color/brand_purple"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Vibration -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/bg_card"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            android:layout_marginBottom="12dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:padding="16dp" android:gravity="center_vertical">
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="\uD83D\uDCF3 Vibration Alerts"
+                        android:textSize="15sp" android:textStyle="bold" android:textColor="@color/text_primary"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Vibrate when critical stress is detected"
+                        android:textSize="12sp" android:textColor="@color/text_secondary"/>
+                </LinearLayout>
+                <Switch android:id="@+id/switch_vibration"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:thumbTint="@color/brand_purple"
+                    android:trackTint="@color/ring_background" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Privacy notice -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/bg_card"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            android:layout_marginBottom="12dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="\uD83D\uDD12 Privacy"
+                    android:textSize="15sp" android:textStyle="bold" android:textColor="@color/text_primary"
+                    android:layout_marginBottom="6dp"/>
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="All stress analysis is performed entirely on your device. No video, audio, or biometric data is ever transmitted to any server."
+                    android:textSize="13sp" android:textColor="@color/text_secondary" android:lineSpacingExtra="3dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Clear data -->
+        <Button
+            android:id="@+id/btn_clear_data"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Clear All Session Data"
+            android:textSize="14sp"
+            android:textColor="@color/stress_critical"
+            android:backgroundTint="@color/bg_card"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="StressWatch AI v1.0.0 \u00b7 Hybrid Stress Detection\nMinimal Hardware \u00b7 Maximum Accuracy"
+            android:textSize="11sp"
+            android:textColor="@color/text_tertiary"
+            android:gravity="center" />
+
+    </LinearLayout>
+</ScrollView>
